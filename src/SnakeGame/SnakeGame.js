@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
+import Disclaimer from '../Disclaimer/Disclaimer';
 
 
 const SnakeGameComponent = (props) =>{
@@ -148,6 +149,7 @@ const SnakeGameComponent = (props) =>{
         <p>Please click on "start game" to play !</p>
         <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div>
       }
+      <Disclaimer />
       </div>
   )
 
