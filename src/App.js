@@ -42,7 +42,7 @@ function App(props) {
          <Route exact path="/brick" component={BrickGameComponent} />
         <Route exact path="/snake" component={SnakeGameComponent} />
         <Route exact path="/t90" component={Tank90GameComponent} />
-        <Route exact path="/*" component={()=><Redirect to="/homr" />} />
+        <Route exact path="/*" component={()=><Redirect to="/home" />} />
         </Switch>
         </div>
     </Router>
