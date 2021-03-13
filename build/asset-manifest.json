@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/jsGaming/static/css/main.048a1496.chunk.css",
-    "main.js": "/jsGaming/static/js/main.79061fed.chunk.js",
-    "main.js.map": "/jsGaming/static/js/main.79061fed.chunk.js.map",
+    "main.js": "/jsGaming/static/js/main.8a8b97b6.chunk.js",
+    "main.js.map": "/jsGaming/static/js/main.8a8b97b6.chunk.js.map",
     "runtime-main.js": "/jsGaming/static/js/runtime-main.d3fc43a8.js",
     "runtime-main.js.map": "/jsGaming/static/js/runtime-main.d3fc43a8.js.map",
     "static/css/2.17e5ed98.chunk.css": "/jsGaming/static/css/2.17e5ed98.chunk.css",
     "static/js/2.915e7535.chunk.js": "/jsGaming/static/js/2.915e7535.chunk.js",
     "static/js/2.915e7535.chunk.js.map": "/jsGaming/static/js/2.915e7535.chunk.js.map",
     "index.html": "/jsGaming/index.html",
-    "precache-manifest.3567fe6414c0fca1b091a0236fb01240.js": "/jsGaming/precache-manifest.3567fe6414c0fca1b091a0236fb01240.js",
+    "precache-manifest.ce9ff1d5a836ac997df59f3512efa71f.js": "/jsGaming/precache-manifest.ce9ff1d5a836ac997df59f3512efa71f.js",
     "service-worker.js": "/jsGaming/service-worker.js",
     "static/css/2.17e5ed98.chunk.css.map": "/jsGaming/static/css/2.17e5ed98.chunk.css.map",
     "static/css/main.048a1496.chunk.css.map": "/jsGaming/static/css/main.048a1496.chunk.css.map"
@@ -19,6 +19,6 @@
     "static/css/2.17e5ed98.chunk.css",
     "static/js/2.915e7535.chunk.js",
     "static/css/main.048a1496.chunk.css",
-    "static/js/main.79061fed.chunk.js"
+    "static/js/main.8a8b97b6.chunk.js"
   ]
 }
