@@ -3,7 +3,7 @@ import React from 'react';
 import Links from './Header/Header';
 import Home from './Home/Home';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
@@ -38,10 +38,11 @@ function App(props) {
       <Links/>
         <div style={{'paddingTop':'30px'}}>
         <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
          <Route exact path="/brick" component={BrickGameComponent} />
         <Route exact path="/snake" component={SnakeGameComponent} />
         <Route exact path="/t90" component={Tank90GameComponent} />
+        <Route exact path="/*" component={()=><Redirect to="/homr" />} />
         </Switch>
         </div>
     </Router>
