@@ -215,7 +215,7 @@ const BrickGameComponent = (props) =>{
           : <div><h1 style={{'margin-top':"100px"}} >THE BRICK GAME</h1>
           <p>Please click on "start game" to play !</p>
           <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div> }
-          <Disclaimer />
+          <Disclaimer displayControls="brick"/>
         </div>
     )
 }

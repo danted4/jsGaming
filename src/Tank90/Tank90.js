@@ -536,7 +536,7 @@ const Tank90GameComponent = (props) =>{
           <p>Please click on "start game" to play !</p>
           <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div>
         }
-        <Disclaimer />
+        <Disclaimer displayControls="t90" />
         </div>
         )
 
