@@ -29,11 +29,11 @@ const BrickGameComponent = (props) =>{
       var brickOffsetTop = 15;
       var brickOffsetLeft = 13;
       var ball = new Image();
-      ball.src = 'images/ball.png';
+      ball.src = 'jsGaming/images/ball.png';
       var brick = new Image();
-      brick.src = 'images/brick.png';
+      brick.src = 'jsGaming/images/brick.png';
       var paddle = new Image();
-      paddle.src = 'images/paddle.png';
+      paddle.src = 'jsGaming/images/paddle.png';
 
       var bricks = [];
 
