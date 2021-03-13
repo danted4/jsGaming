@@ -5,12 +5,12 @@ const Home = () =>{
     <div>
     <h3>WELCOME TO JAVASCRIPT GAMING</h3>
     <p>Please choose one of the games mentioned below</p>
-    <div className="row" >
+    <div className="row no-gutters" >
     <div className = 'col-xl-12'><NavLink  exact activeClassName="active" to="/brick"><span className='gSelect'>Brick Game</span></NavLink></div></div>
-    <div className="row">
+    <div className="row no-gutters">
     <div className = 'col-xl-12'><NavLink className = 'col-xs-6' exact activeClassName="active" to="/snake"><span className='gSelect'>Snake Game</span></NavLink></div>
     </div>
-    <div className="row">
+    <div className="row no-gutters">
     <div className = 'col-xl-12'><NavLink className = 'col-xs-6' exact activeClassName="active" to="/t90"><span className='gSelect'>T90 Game</span></NavLink></div>
     </div>
     </div>
