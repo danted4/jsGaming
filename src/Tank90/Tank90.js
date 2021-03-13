@@ -9,21 +9,21 @@ const Tank90GameComponent = (props) =>{
   useEffect(()=>{
       var canvas;
       var stage2 = false;
-      var myAudio = new Audio('music/start.mp3');
-      var missFire = new Audio('music/miss.mp3');
-      var fireAudio = new Audio('music/fire.mp3');
-      // var movingAudio = new Audio('music/moving.mp3');
-      var blast = new Audio('music/blast.mp3');
+      var myAudio = new Audio('jsGaming/music/start.mp3');
+      var missFire = new Audio('jsGaming/music/miss.mp3');
+      var fireAudio = new Audio('jsGaming/music/fire.mp3');
+      // var movingAudio = new Audio('jsGaming/music/moving.mp3');
+      var blast = new Audio('jsGaming/music/blast.mp3');
       var home = new Image();
       var tanker = new Image();
       var enemyTankImage = new Image();
       var brickImage = new Image();
       var powerUp = new Image();
-      powerUp.src = 'images/star.gif';
-      brickImage.src = 'images/t_brick.jpg';
-      enemyTankImage.src='images/etank.png';
-      tanker.src = 'images/tank.png';
-      home.src = 'images/t90_home.png';
+      powerUp.src = 'jsGaming/images/star.gif';
+      brickImage.src = 'jsGaming/images/t_brick.jpg';
+      enemyTankImage.src='jsGaming/images/etank.png';
+      tanker.src = 'jsGaming/images/tank.png';
+      home.src = 'jsGaming/images/t90_home.png';
 
       // movingAudio.addEventListener('timeupdate', function(){
       //                 var buffer = .44
