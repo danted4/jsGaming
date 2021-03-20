@@ -7,7 +7,16 @@
 .App-logo {
   height: 40vmin;
 }
-
+.smallScreenMessage{
+  background: #dcdcdc;
+  min-height: 100vh;
+  text-align: center;
+  padding: 1rem;
+}
+.midpoint{
+  margin-top: 50%;
+  transform: translate(0,-50%);
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

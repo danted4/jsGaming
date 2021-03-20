@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import './App.css';
 import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { isMobile } from 'react-device-detect';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
 // import LoadSpinnerComponent from './utility/loader';
@@ -25,7 +26,16 @@ function App(props) {
   // const toggleOutput = () =>{
   //   toggler({showhide : !showhideState.showhide})
   // }
+  if(isMobile){
+    return <React.Fragment>
+      <div className="smallScreenMessage">
+        <h2>Message</h2>
+        <p className="midpoint">Please switch to a desktop for exploring the HTML-5 and javascript video game section...</p>
+      </div>
+    </React.Fragment>
 
+  }
+  else{
   return (
     <div>
     <div className="App">
@@ -51,6 +61,7 @@ function App(props) {
     </div>
     </div>
   );
+  }
 }
 
 export default App;
