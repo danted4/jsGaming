@@ -528,7 +528,7 @@ const Tank90GameComponent = (props) =>{
 
   },[props.gameOn])
 
-  return(      <div>
+  return(      <div className='text'>
         { props.gameOn ?
 
           <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>

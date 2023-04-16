@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: #05050d;
   height: 100vh;
   width:100%;
 }
@@ -28,19 +29,60 @@
   color: white;
 }
 .active{
-  color:red !important;
+  font-weight: 500;
+  color:white !important;
+}
+.text{
+  color: #6f6a6a;
+}
+.text a{
+  color: unset;
+}
+.text a:hover{
+  text-decoration: none;
+}
+.text button{
+  padding: 2px 10px;
+  border: none;
+}
+.text button.btn-danger{
+  background: #c80000;
+}
+.text button.btn-danger:hover{
+  background: red;
 }
 .gSelect{
+  color: #007bff;
   font-family: monospace;
   font-size: 70px;
-  line-height: 200px;
-  background: black;
+  line-height: 100px;
+  background: #000;
   border-radius: 10px;
+}
+.gSelect:hover{
+  color: #62cdff;
+  background: #000;
 }
 .header{
   background: #000;
   position: fixed;
+  padding: 10px 0;
   width: 100%;
+}
+.header a{
+  margin: 0 20px;
+  text-decoration: none;
+  color: #6f6a6a;
+}
+canvas{
+  box-shadow: 0 0 10px #62cdff;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.header a:hover{
+  text-decoration: none;
+  color: #b3aaaa;
 }
 .App-link {
   color: #09d3ac;

@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 const Home = () =>{
   return(
-    <div>
-    <h3>WELCOME TO JAVASCRIPT GAMING</h3>
-    <p>Please choose one of the games mentioned below</p>
+    <div className='text' style={{marginTop:'80px'}}>
+      <h4>Welcome to JavaScript Gaming !</h4>
+    <p>Please choose one of the games mentioned below.</p>
     <div className="row no-gutters" >
     <div className = 'col-xl-12'><NavLink  exact activeClassName="active" to="/brick"><span className='gSelect'>Brick Game</span></NavLink></div></div>
     <div className="row no-gutters">

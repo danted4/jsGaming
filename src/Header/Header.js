@@ -4,7 +4,7 @@ const Links = () => {
     return (
       <nav className="header">
         <div>
-        <NavLink  exact activeClassName="active" to="/">Home</NavLink>
+        <NavLink  exact activeClassName="active" to="/home">Home</NavLink>
         <span>&nbsp;&nbsp;</span>
         <NavLink  activeClassName="active" to="/brick">Brick Game</NavLink>
         <span>&nbsp;&nbsp;</span>
