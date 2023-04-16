@@ -95,7 +95,7 @@ const Tank90GameComponent = (props) =>{
               tank_dx = 0; tank_dy = tspeed;
               tank_dir='D';
           }
-          if(e.keyCode === 17){
+          if(e.keyCode === 32){
             firePressed = true;
             trackFires();
           }
@@ -114,7 +114,7 @@ const Tank90GameComponent = (props) =>{
             case 40:
               tank_dy = 0;
               break;
-            case 17:
+            case 32:
               firePressed = false;
           }
         }

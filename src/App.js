@@ -48,11 +48,11 @@ function App(props) {
       <Suspense fallback={<>Loading...</>}><Links/></Suspense>
         <div style={{'paddingTop':'30px'}}>
         <Switch>
-        <Route exact path="/home" component={()=><Suspense fallback={<>Loading...</>}><Home /></Suspense>} />
+        <Route exact path="/jsGaming" component={()=><Suspense fallback={<>Loading...</>}><Home /></Suspense>} />
         <Route exact path="/brick" component={()=><Suspense fallback={<>Loading...</>}><BrickGameComponent /></Suspense> } />
         <Route exact path="/snake" component={()=><Suspense fallback={<>Loading...</>}><SnakeGameComponent /></Suspense>} />
         <Route exact path="/t90" component={()=><Suspense fallback={<>Loading...</>}><Tank90GameComponent /></Suspense>} />
-        <Route exact path="/*" component={()=><Redirect to="/home" />} />
+        <Route exact path="/*" component={()=><Redirect to="/jsGaming" />} />
         </Switch>
         </div>
     </Router>

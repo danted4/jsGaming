@@ -35,6 +35,12 @@
 .text{
   color: #6f6a6a;
 }
+.text h5 span{
+  color: white;
+}
+.text h5 span.red{
+  color: red;
+}
 .text a{
   color: unset;
 }

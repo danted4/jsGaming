@@ -12,13 +12,13 @@ const Disclaimer = (props) =>{
               the concent of original owners of the respective titles.</p>
               <h5><strong>Controls</strong>: 
               { props.displayControls === 'brick' ? <span>
-                &nbsp;Left, Right arrow keys [movement]
+                &nbsp;Left, Right arrow keys [ <span className='red'>MOVEMENT</span> ]
               </span> : null}
               { props.displayControls === 'snake' ? <span>
-                &nbsp;Left, Right, Top, Down arrow keys [movement]
+                &nbsp;Left, Right, Top, Down arrow keys [ <span className='red'>MOVEMENT</span> ]
               </span> : null}
               { props.displayControls === 't90' ? <span>
-                &nbsp;Left, Right, Top, Down arrow keys [movement],  RCtrl [fire]
+                &nbsp;Left, Right, Top, Down arrow keys [ <span className='red'>MOVEMENT</span> ],  Space Bar [ <span className='red'>FIRE</span> ]
               </span> : null}
               </h5>
         </div>
