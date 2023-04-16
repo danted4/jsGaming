@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
-import { freeze, unfreeze } from '../common';
+import { freeze, unfreeze, PUBLIC_URL } from '../common';
 
 
 const ball = new Image();
-ball.src = '/public/images/ball.png';
+ball.src = `${PUBLIC_URL}/images/ball.png`;
 const brick = new Image();
-brick.src = '/public/images/brick.png';
+brick.src = `${PUBLIC_URL}/images/brick.png`;
 const paddle = new Image();
-paddle.src = '/public/images/paddle.png';
+paddle.src = `${PUBLIC_URL}/images/paddle.png`;
 
 const BrickGameComponent = (props) =>{
 
@@ -215,7 +215,7 @@ const BrickGameComponent = (props) =>{
             <canvas id ='game' style={{width:'100%',height:'100%',background:'black'}}></canvas>
             <button className="btn btn-danger" onClick={()=>{ props.stopGame()}}>STOP GAME</button>
           </div>
-          : <div><h1 style={{'margin-top':"100px"}} >THE BRICK GAME</h1>
+          : <div><h1 style={{'marginTop':"100px"}} >THE BRICK GAME</h1>
           <p>Please click on "start game" to play !</p>
           <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div> }
           <Disclaimer displayControls="brick"/>

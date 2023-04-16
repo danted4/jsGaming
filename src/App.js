@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 // import logo from './logo.svg';
-import Links from './Header/Header';
-import Home from './Home/Home';
 import './App.css';
 import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,9 +7,11 @@ import { isMobile } from 'react-device-detect';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
 // import LoadSpinnerComponent from './utility/loader';
-import BrickGameComponent from './BrickGame/BrickGame';
-import SnakeGameComponent from './SnakeGame/SnakeGame';
-import Tank90GameComponent from './Tank90/Tank90';
+const Links = React.lazy(()=>import('./Header/Header'))
+const Home = React.lazy(()=>import('./Home/Home'));
+const BrickGameComponent = React.lazy(()=> import('./BrickGame/BrickGame'));
+const SnakeGameComponent = React.lazy(()=> import('./SnakeGame/SnakeGame'));
+const Tank90GameComponent = React.lazy(()=> import('./Tank90/Tank90'));
 
 function App(props) {
   // const [usernameState, changeState] = useState({
@@ -45,13 +45,13 @@ function App(props) {
     */}
     <section >
     <Router>
-      <Links/>
+      <Suspense fallback={<>Loading...</>}><Links/></Suspense>
         <div style={{'paddingTop':'30px'}}>
         <Switch>
-        <Route exact path="/home" component={Home} />
-         <Route exact path="/brick" component={BrickGameComponent} />
-        <Route exact path="/snake" component={SnakeGameComponent} />
-        <Route exact path="/t90" component={Tank90GameComponent} />
+        <Route exact path="/home" component={()=><Suspense fallback={<>Loading...</>}><Home /></Suspense>} />
+        <Route exact path="/brick" component={()=><Suspense fallback={<>Loading...</>}><BrickGameComponent /></Suspense> } />
+        <Route exact path="/snake" component={()=><Suspense fallback={<>Loading...</>}><SnakeGameComponent /></Suspense>} />
+        <Route exact path="/t90" component={()=><Suspense fallback={<>Loading...</>}><Tank90GameComponent /></Suspense>} />
         <Route exact path="/*" component={()=><Redirect to="/home" />} />
         </Switch>
         </div>

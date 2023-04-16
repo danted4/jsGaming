@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -41,21 +40,14 @@ module.exports = {
         filename: '[name][chunkhash].js',
         clean: true,
     },
-    optimization: {
-        minimize:true,
-        minimizer: [
-          new TerserPlugin({
-            parallel: true,
-            terserOptions: {
-              // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-              compress: {
-                drop_console: true
-              },
-              output : {
-                comments: false
-              }
-            },
-          }),
-        ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, './public'),
+            publicPath: '/public'
+        },
+        allowedHosts: ['localhost'],
+        compress: true,
+        port: 8080,
+        historyApiFallback: true,
     },
 };

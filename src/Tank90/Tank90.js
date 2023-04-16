@@ -3,23 +3,23 @@ import {connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
 import BrickLayout from './maps/levels/level_0';
 import Stages from './maps/stages/stage_02';
-import { freeze, unfreeze } from '../common';
+import { freeze, unfreeze, PUBLIC_URL } from '../common';
 
-const myAudio = new Audio('/public/music/start.mp3');
-const missFire = new Audio('/public/music/miss.mp3');
-const fireAudio = new Audio('/public/music/fire.mp3');
-// const movingAudio = new Audio('jsGaming/music/moving.mp3');
-const blast = new Audio('/public/music/blast.mp3');
+const myAudio = new Audio(`${PUBLIC_URL}/music/start.mp3`);
+const missFire = new Audio(`${PUBLIC_URL}/music/miss.mp3`);
+const fireAudio = new Audio(`${PUBLIC_URL}/music/fire.mp3`);
+// const movingAudio = new Audio('jsGaming/music/moving.mp3`);
+const blast = new Audio(`${PUBLIC_URL}/music/blast.mp3`);
 const home = new Image();
 const tanker = new Image();
 const enemyTankImage = new Image();
 const brickImage = new Image();
 const powerUp = new Image();
-powerUp.src = '/public/images/star.gif';
-brickImage.src = '/public/images/t_brick.jpg';
-enemyTankImage.src='/public/images/etank.png';
-tanker.src = '/public/images/tank.png';
-home.src = '/public/images/t90_home.png';
+powerUp.src = `${PUBLIC_URL}/images/star.gif`;
+brickImage.src = `${PUBLIC_URL}/images/t_brick.jpg`;
+enemyTankImage.src=`${PUBLIC_URL}/images/etank.png`;
+tanker.src = `${PUBLIC_URL}/images/tank.png`;
+home.src = `${PUBLIC_URL}/images/t90_home.png`;
 
 const Tank90GameComponent = (props) =>{
   window['_int'] = [];
