@@ -44,6 +44,7 @@ const Tank90GameComponent = (props) =>{
         myAudio.play();
         //initialState
         var score = 0;
+        var GAME_OVER = false;
         var left_pressed = false;
         var right_pressed = false;
         var up_pressed = false;
@@ -207,6 +208,7 @@ const Tank90GameComponent = (props) =>{
           return destoyed;
         }
         function gameOver(){
+          GAME_OVER=true;
           for(let i=0; i<window._int.length;i++){
             if(i==0){
             clearInterval(window._int[i]);
@@ -247,7 +249,7 @@ const Tank90GameComponent = (props) =>{
           canFireAgain=false;
           window._int[7]=setTimeout(()=>{ canFireAgain =true },1000);
           }
-          if(firePressed){
+          if(firePressed && !GAME_OVER){
             requestAnimationFrame(trackFires);
           }
         }
@@ -283,7 +285,7 @@ const Tank90GameComponent = (props) =>{
           gy = gy + sy;
           gx = gx + sx;
 
-          if(gy > 0 && gy < canvas.height && gx > 0 && gx < canvas.width){
+          if(gy > 0 && gy < canvas.height && gx > 0 && gx < canvas.width && !GAME_OVER){
             requestAnimationFrame(()=>{fire(gx,gy,sx,sy,object)});
           }
           else{
