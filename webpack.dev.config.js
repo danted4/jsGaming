@@ -43,7 +43,7 @@ module.exports = {
     devServer: {
         static: {
             directory: path.join(__dirname, './public'),
-            publicPath: '/public'
+            publicPath: '/jsGaming/public'
         },
         allowedHosts: ['localhost'],
         compress: true,

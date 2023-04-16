@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { createStore } from 'redux';
@@ -8,7 +8,10 @@ import * as serviceWorker from './serviceWorker';
 import rootReducer from './store/reducer';
 const store = createStore(rootReducer); //takes reducer
 
-ReactDOM.render(<Provider store={store} ><App name="Kanav" char=" is awesome"/></Provider>, document.getElementById('root'));
+const rootNode = document.getElementById('root');
+const root = createRoot(rootNode);
+
+root.render(<Provider store={store} ><App name="Kanav" char=" is awesome"/></Provider>);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

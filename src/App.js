@@ -1,9 +1,12 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useCallback } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { isMobile } from 'react-device-detect';
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+import pConfig from './common/particles/config/particles.json';
 // import UserInput from './UserInput/UserInput';
 // import UserOutput from './UserOutput/UserOutput';
 // import LoadSpinnerComponent from './utility/loader';
@@ -14,6 +17,13 @@ const SnakeGameComponent = React.lazy(()=> import('./SnakeGame/SnakeGame'));
 const Tank90GameComponent = React.lazy(()=> import('./Tank90/Tank90'));
 
 function App(props) {
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
+}, []);
+
+const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+}, []);
   // const [usernameState, changeState] = useState({
   //   user1 : 'abc'
   // })
@@ -38,6 +48,7 @@ function App(props) {
   else{
   return (
     <div>
+<Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={pConfig}/>
     <div className="App">
   {/*  <button onClick={toggleOutput}>{ showhideState.showhide ? 'Hide ' :  'Show '}Output</button>
     <UserInput changed = {changeHandler} name = {usernameState.user1}/>
@@ -47,13 +58,13 @@ function App(props) {
     <Router>
       <Suspense fallback={<>Loading...</>}><Links/></Suspense>
         <div style={{'paddingTop':'30px'}}>
-        <Switch>
-        <Route exact path="/jsGaming" component={()=><Suspense fallback={<>Loading...</>}><Home /></Suspense>} />
-        <Route exact path="/brick" component={()=><Suspense fallback={<>Loading...</>}><BrickGameComponent /></Suspense> } />
-        <Route exact path="/snake" component={()=><Suspense fallback={<>Loading...</>}><SnakeGameComponent /></Suspense>} />
-        <Route exact path="/t90" component={()=><Suspense fallback={<>Loading...</>}><Tank90GameComponent /></Suspense>} />
-        <Route exact path="/*" component={()=><Redirect to="/jsGaming" />} />
-        </Switch>
+        <Routes>
+        <Route exact="true" path="/jsGaming" element={<Suspense fallback={<>Loading...</>}><Home /></Suspense>} />
+        <Route exact="true" path="/brick" element={<Suspense fallback={<>Loading...</>}><BrickGameComponent /></Suspense> } />
+        <Route exact="true" path="/snake" element={<Suspense fallback={<>Loading...</>}><SnakeGameComponent /></Suspense>} />
+        <Route exact="true" path="/t90" element={<Suspense fallback={<>Loading...</>}><Tank90GameComponent /></Suspense>} />
+        <Route exact="true" path="/*" element={<Navigate to="/jsGaming" />} />
+        </Routes>
         </div>
     </Router>
     </section>

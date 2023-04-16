@@ -4,13 +4,13 @@ const Links = () => {
     return (
       <nav className="header">
         <div>
-        <NavLink  exact activeClassName="active" to="/jsGaming">Home</NavLink>
+        <NavLink  exact="true" className={({isActive}) => isActive ? 'active': ''} to="/jsGaming">Home</NavLink>
         <span>&nbsp;&nbsp;</span>
-        <NavLink  activeClassName="active" to="/brick">Brick Game</NavLink>
+        <NavLink  className={({isActive}) => isActive ? 'active': ''} to="/brick">Brick Game</NavLink>
         <span>&nbsp;&nbsp;</span>
-        <NavLink  activeClassName="active" to="/snake">Snake Game</NavLink>
+        <NavLink  className={({isActive}) => isActive ? 'active': ''} to="/snake">Snake Game</NavLink>
         <span>&nbsp;&nbsp;</span>
-        <NavLink  activeClassName="active" to="/t90">T90 Game</NavLink>
+        <NavLink  className={({isActive}) => isActive ? 'active': ''} to="/t90">T90 Game</NavLink>
         <span>&nbsp;&nbsp;</span>
         {/* {isAuthenticated && <span><NavLink  class="blinkingclass" activeClassName="active" to="/admin">Admin</NavLink></span>} */}
         </div>
