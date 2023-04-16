@@ -3,6 +3,23 @@ import {connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
 import BrickLayout from './maps/levels/level_0';
 import Stages from './maps/stages/stage_02';
+import { freeze, unfreeze } from '../common';
+
+const myAudio = new Audio('/public/music/start.mp3');
+const missFire = new Audio('/public/music/miss.mp3');
+const fireAudio = new Audio('/public/music/fire.mp3');
+// const movingAudio = new Audio('jsGaming/music/moving.mp3');
+const blast = new Audio('/public/music/blast.mp3');
+const home = new Image();
+const tanker = new Image();
+const enemyTankImage = new Image();
+const brickImage = new Image();
+const powerUp = new Image();
+powerUp.src = '/public/images/star.gif';
+brickImage.src = '/public/images/t_brick.jpg';
+enemyTankImage.src='/public/images/etank.png';
+tanker.src = '/public/images/tank.png';
+home.src = '/public/images/t90_home.png';
 
 const Tank90GameComponent = (props) =>{
   window['_int'] = [];
@@ -10,21 +27,7 @@ const Tank90GameComponent = (props) =>{
   useEffect(()=>{
       var canvas;
       var stage2 = false;
-      var myAudio = new Audio('jsGaming/music/start.mp3');
-      var missFire = new Audio('jsGaming/music/miss.mp3');
-      var fireAudio = new Audio('jsGaming/music/fire.mp3');
-      // var movingAudio = new Audio('jsGaming/music/moving.mp3');
-      var blast = new Audio('jsGaming/music/blast.mp3');
-      var home = new Image();
-      var tanker = new Image();
-      var enemyTankImage = new Image();
-      var brickImage = new Image();
-      var powerUp = new Image();
-      powerUp.src = 'jsGaming/images/star.gif';
-      brickImage.src = 'jsGaming/images/t_brick.jpg';
-      enemyTankImage.src='jsGaming/images/etank.png';
-      tanker.src = 'jsGaming/images/tank.png';
-      home.src = 'jsGaming/images/t90_home.png';
+
 
       // movingAudio.addEventListener('timeupdate', function(){
       //                 var buffer = .44
@@ -532,7 +535,7 @@ const Tank90GameComponent = (props) =>{
             <canvas id ='game' style={{width:'100%',height:'100%',background:'black'}}></canvas>
             <button className="btn btn-danger" onClick={()=>{ props.stopGame()}}>STOP GAME</button>
           </div>
-          : <div><h1 style={{'margin-top':"100px"}} >THE T90 GAME</h1>
+          : <div><h1 style={{'marginTop':"100px"}} >THE T90 GAME</h1>
           <p>Please click on "start game" to play !</p>
           <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div>
         }
@@ -548,8 +551,8 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = (dispatch) =>{
   return{
-    startGame : () =>{ dispatch({type:"START_TANK_GAME"}) },
-    stopGame : () =>{ dispatch({type:"STOP_TANK_GAME"}) }
+    startGame : () =>{ freeze(); dispatch({type:"START_TANK_GAME"}) },
+    stopGame : () =>{  unfreeze(); dispatch({type:"STOP_TANK_GAME"}) }
   }
 }
 

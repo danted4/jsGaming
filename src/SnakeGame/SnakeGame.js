@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
+import { freeze, unfreeze } from '../common';
 
 
 const SnakeGameComponent = (props) =>{
@@ -145,7 +146,7 @@ const SnakeGameComponent = (props) =>{
           <canvas id ='game' style={{width:'100%',height:'100%',background:'black'}}></canvas>
           <button className="btn btn-danger" onClick={()=>{ props.stopGame()}}>STOP GAME</button>
         </div>
-        : <div><h1 style={{'margin-top':"100px"}} >THE SNAKE GAME</h1>
+        : <div><h1 style={{'marginTop':"100px"}} >THE SNAKE GAME</h1>
         <p>Please click on "start game" to play !</p>
         <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div>
       }
@@ -162,8 +163,8 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = (dispatch) =>{
   return{
-    startGame : () => { dispatch({type:'START_SNAKE_GAME'}) },
-    stopGame : () => {dispatch({type:'STOP_SNAKE_GAME'})}
+    startGame : () => { freeze();dispatch({type:'START_SNAKE_GAME'}) },
+    stopGame : () => { unfreeze();dispatch({type:'STOP_SNAKE_GAME'})}
   }
 }
 

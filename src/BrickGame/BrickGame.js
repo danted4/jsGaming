@@ -1,6 +1,15 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
+import { freeze, unfreeze } from '../common';
+
+
+const ball = new Image();
+ball.src = '/public/images/ball.png';
+const brick = new Image();
+brick.src = '/public/images/brick.png';
+const paddle = new Image();
+paddle.src = '/public/images/paddle.png';
 
 const BrickGameComponent = (props) =>{
 
@@ -29,12 +38,6 @@ const BrickGameComponent = (props) =>{
       var brickPadding = 7;
       var brickOffsetTop = 15;
       var brickOffsetLeft = 13;
-      var ball = new Image();
-      ball.src = 'jsGaming/images/ball.png';
-      var brick = new Image();
-      brick.src = 'jsGaming/images/brick.png';
-      var paddle = new Image();
-      paddle.src = 'jsGaming/images/paddle.png';
 
       var bricks = [];
 
@@ -227,8 +230,8 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = (dispatch) =>{
   return{
-    startGame : () => { dispatch({type:'START_BRICK_GAME'}) },
-    stopGame : () => {dispatch({type:'STOP_BRICK_GAME'})}
+    startGame : () => { freeze(); dispatch({type:'START_BRICK_GAME'}) },
+    stopGame : () => { unfreeze(); dispatch({type:'STOP_BRICK_GAME'})}
   }
 }
 
