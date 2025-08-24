@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
 import { freeze, unfreeze, PUBLIC_URL } from '../common';
+import { fullscreen } from '../utility/commonFunctions';
 
 
 const ball = new Image();
@@ -14,43 +15,43 @@ paddle.src = `${PUBLIC_URL}/images/paddle.png`;
 const BrickGameComponent = (props) =>{
 
   useEffect(()=>{
-    var canvas;
-    var pauseGame = false;
+    let canvas;
+    let pauseGame = false;
     if(props.gameOn){
       canvas = document.getElementById('game');
-      var ctx = canvas.getContext('2d');
-      var x = canvas.width/2;
-      var y = canvas.height -30;
-      var score = 0;
-      var dx = 2.5;
-      var dy = -2.5;
-      var ballRadius = 11;
-      var paddleWidth = 55;
-      var paddleHeight = 4;
-      var paddleX = (canvas.width-paddleWidth)/2;
-      var rightPress = false;
-      var leftPress = false;
-      var firstTimeLoad = true;
-      var brickRows = 3;
-      var brickColums = 5;
-      var brickWidth = 48;
-      var brickHeight = 10;
-      var brickPadding = 7;
-      var brickOffsetTop = 15;
-      var brickOffsetLeft = 13;
+      let ctx = canvas.getContext('2d');
+      let x = canvas.width/2;
+      let y = canvas.height -30;
+      let score = 0;
+      let dx = 2.5;
+      let dy = -2.5;
+      let ballRadius = 11;
+      let paddleWidth = 55;
+      let paddleHeight = 4;
+      let paddleX = (canvas.width-paddleWidth)/2;
+      let rightPress = false;
+      let leftPress = false;
+      let firstTimeLoad = true;
+      let brickRows = 3;
+      let brickColums = 5;
+      let brickWidth = 48;
+      let brickHeight = 10;
+      let brickPadding = 7;
+      let brickOffsetTop = 15;
+      let brickOffsetLeft = 13;
 
-      var bricks = [];
+      let bricks = [];
 
-      for (var c=0;c<brickColums;c++){
+      for (let c=0;c<brickColums;c++){
         bricks[c] = [];
-        for(var r=0;r<brickRows;r++){
+        for(let r=0;r<brickRows;r++){
           bricks[c][r] = {x:0,y:0,active:true}
         }
       }
       function collisionDetection(){
-        for (var c=0;c<brickColums;c++){
-          for(var r=0;r<brickRows;r++){
-              var b = bricks[c][r];
+        for (let c=0;c<brickColums;c++){
+          for(let r=0;r<brickRows;r++){
+              let b = bricks[c][r];
               if(x > b.x && x < b.x+brickWidth && y > b.y && y  < b.y + brickHeight && b.active ){
                 dy = -dy;
                 score = score + 10;
@@ -60,11 +61,11 @@ const BrickGameComponent = (props) =>{
         }
       }
       function drawBricks(){
-        for (var c=0;c<brickColums;c++){
-          for(var r=0;r<brickRows;r++){
+        for (let c=0;c<brickColums;c++){
+          for(let r=0;r<brickRows;r++){
             if(bricks[c][r].active){
-            var brickX = (c*(brickWidth + brickPadding))+brickOffsetLeft;
-            var brickY = (r*(brickHeight + brickPadding))+brickOffsetTop;
+            let brickX = (c*(brickWidth + brickPadding))+brickOffsetLeft;
+            let brickY = (r*(brickHeight + brickPadding))+brickOffsetTop;
             bricks[c][r].x = brickX;
             bricks[c][r].y = brickY;
             ctx.beginPath();
@@ -159,7 +160,7 @@ const BrickGameComponent = (props) =>{
           ctx.fillText('Starting game...',80,(canvas.height/2));
           ctx.font = '13px Arial';
           ctx.fillStyle = 'yellow'
-          ctx.fillText('( Please Wait )',90,(canvas.height/2)+30);
+          ctx.fillText(' 3, 2, 1... Go!',90,(canvas.height/2)+30);
           ctx.closePath();
         }
         if(x + dx - ballRadius < 0 || x + dx + ballRadius > canvas.width){
@@ -208,18 +209,23 @@ const BrickGameComponent = (props) =>{
   ,[props.gameOn])
 
     return (
-        <div className='text'>
+      <div className='text'>
         { props.gameOn ?
-
           <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>
             <canvas id ='game' style={{width:'100%',height:'100%',background:'black'}}></canvas>
+              <button style={{marginRight: "10px"}} className="btn btn-secondary" onClick={fullscreen}>FULLSCREEN</button>
             <button className="btn btn-danger" onClick={()=>{ props.stopGame()}}>STOP GAME</button>
           </div>
-          : <div><h1 style={{'marginTop':"100px"}} >THE BRICK GAME</h1>
-          <p>Please click on "start game" to play !</p>
-          <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div> }
-          <Disclaimer displayControls="brick"/>
-        </div>
+          : <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>
+              <div style={{width:'100%',height:'100%', padding:"5px", marginBottom:"15px",background:'black', boxShadow: "0 0 10px #62cdff", borderRadius: "5px"}}>
+                <h1 style={{'marginTop':"100px"}} >THE BRICK GAME</h1>
+                <p>Please click on "start game" to play !</p>
+              </div>
+            <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button>
+            </div> 
+          }
+        <Disclaimer displayControls="brick"/>
+      </div>
     )
 }
 

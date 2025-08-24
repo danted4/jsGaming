@@ -4,6 +4,7 @@ import Disclaimer from '../Disclaimer/Disclaimer';
 import BrickLayout from './maps/levels/level_0';
 import Stages from './maps/stages/stage_02';
 import { freeze, unfreeze, PUBLIC_URL } from '../common';
+import { fullscreen } from '../utility/commonFunctions';
 
 const myAudio = new Audio(`${PUBLIC_URL}/music/start.mp3`);
 const missFire = new Audio(`${PUBLIC_URL}/music/miss.mp3`);
@@ -25,51 +26,51 @@ const Tank90GameComponent = (props) =>{
   window['_int'] = [];
   window['_int2'] = 0;
   useEffect(()=>{
-      var canvas;
-      var stage2 = false;
+      let canvas;
+      let stage2 = false;
 
 
       // movingAudio.addEventListener('timeupdate', function(){
-      //                 var buffer = .44
+      //                 let buffer = .44
       //                 if(this.currentTime > this.duration - buffer){
       //                     this.currentTime = 0
       //                     this.play()
       //                 }}, false);
 
 
-      var movingAudioInterval;
+      let movingAudioInterval;
       if(props.gameOn){
         canvas = document.getElementById("game");
-        var ctx = canvas.getContext('2d');
+        let ctx = canvas.getContext('2d');
         myAudio.play();
         //initialState
-        var score = 0;
-        var GAME_OVER = false;
-        var left_pressed = false;
-        var right_pressed = false;
-        var up_pressed = false;
-        var down_pressed = false;
-        var tank_dx =0;
-        var tank_dy = 0;
-        var tspeed = 0.6;
-        var espeed = 0.5;
-        var gspeed = 2;
-        var t_gspeed = 1.5;
-        var gspeed_y ; var gspeed_x;
-        var p_blink=true;
-        var blinker;
-        var tank_dir = 'T';
-        var main = true;
-        var x = Math.round(canvas.width/2) -40;
-        var y = canvas.height -8;
-        var enemyPositions = [{x:0,y:0,dir:'D',destroyed:false,dx:0,dy:espeed,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width/2)-4,y:0,dir:'D',destroyed:false,dx:0,dy:espeed,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width)-8,y:0,dir:'D',destroyed:false,dx:0,dy:espeed,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true}];
-        var enemyPositions2 = [{x:0,y:0,dir:'D',destroyed:false,dx:0,dy:espeed+0.5,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width/2)-4,y:0,dir:'D',destroyed:false,dx:0,dy:espeed+0.5,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width)-8,y:0,dir:'D',destroyed:false,dx:0,dy:espeed+0.5,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true}];
-        var gun_x ;
-        var gun_y ;
-        var canFireAgain = true;
-        var firePressed = false;
-        var homeAlive = true;
-        var brickPositions = BrickLayout.getPositions(Math.round(canvas.width),Math.round(canvas.height));
+        let score = 0;
+        let GAME_OVER = false;
+        let left_pressed = false;
+        let right_pressed = false;
+        let up_pressed = false;
+        let down_pressed = false;
+        let tank_dx =0;
+        let tank_dy = 0;
+        let tspeed = 0.6;
+        let espeed = 0.5;
+        let gspeed = 2;
+        let t_gspeed = 1.5;
+        let gspeed_y ; let gspeed_x;
+        let p_blink=true;
+        let blinker;
+        let tank_dir = 'T';
+        let main = true;
+        let x = Math.round(canvas.width/2) -40;
+        let y = canvas.height -8;
+        let enemyPositions = [{x:0,y:0,dir:'D',destroyed:false,dx:0,dy:espeed,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width/2)-4,y:0,dir:'D',destroyed:false,dx:0,dy:espeed,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width)-8,y:0,dir:'D',destroyed:false,dx:0,dy:espeed,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true}];
+        let enemyPositions2 = [{x:0,y:0,dir:'D',destroyed:false,dx:0,dy:espeed+0.5,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width/2)-4,y:0,dir:'D',destroyed:false,dx:0,dy:espeed+0.5,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true},{x:Math.round(canvas.width)-8,y:0,dir:'D',destroyed:false,dx:0,dy:espeed+0.5,gun_x:0,gun_y:0,gspeed_x:0,gspeed_y:0,canFireAgain:true}];
+        let gun_x ;
+        let gun_y ;
+        let canFireAgain = true;
+        let firePressed = false;
+        let homeAlive = true;
+        let brickPositions = BrickLayout.getPositions(Math.round(canvas.width),Math.round(canvas.height));
         // for(let ix =30;ix<=Math.round(canvas.width)-30;ix+=30){
         //   for(let iy=30;iy<=Math.round(canvas.height)-50;iy+=5){
         //     brickPositions.push({x:ix,y:iy,visible:true});
@@ -96,7 +97,7 @@ const Tank90GameComponent = (props) =>{
               tank_dx = 0; tank_dy = tspeed;
               tank_dir='D';
           }
-          if(e.keyCode === 32){
+          if(e.keyCode === 70){
             firePressed = true;
             trackFires();
           }
@@ -115,7 +116,7 @@ const Tank90GameComponent = (props) =>{
             case 40:
               tank_dy = 0;
               break;
-            case 32:
+            case 70:
               firePressed = false;
           }
         }
@@ -139,7 +140,7 @@ const Tank90GameComponent = (props) =>{
             });
           }
         function destroyBrickCheck(gx,gy,sx,sy){
-          var destoyed = false;
+          let destoyed = false;
           brickPositions.forEach((brick, i) => {
               if(brick.visible && gx + sx < brick.x + 10 && gx+sx+2 > brick.x && gy+sy < brick.y+4 && gy+sy+2 > brick.y){
                 destoyed = true;
@@ -178,14 +179,14 @@ const Tank90GameComponent = (props) =>{
 
         }
         function homeDestroyedCheck(gx,gy,sx,sy){
-          var destoyed = false;
+          let destoyed = false;
               if(gx + sx < canvas.width/2 && gx+sx+2 > canvas.width/2-20 && gy+sy < canvas.height && gy+sy+2 > canvas.height-20){
                 destoyed = true;
               }
           return destoyed;
         }
         function destroyTankCheck(gx,gy,sx,sy){
-          var destoyed = false;
+          let destoyed = false;
           enemyPositions.forEach((tank, i) => {
               if(!tank.destoyed && gx + sx < tank.x + 8 && gx+sx+2 > tank.x && gy+sy < tank.y+8 && gy+sy+2 > tank.y){
                 destoyed = true;
@@ -201,7 +202,7 @@ const Tank90GameComponent = (props) =>{
           return destoyed;
         }
         function mainTankDestroyed(gx,gy,sx,sy){
-          var destoyed = false;
+          let destoyed = false;
               if(gx + sx < x + 8 && gx+sx+2 > x && gy+sy < y+8 && gy+sy+2 > y){
                 destoyed = true;
               }
@@ -486,8 +487,8 @@ const Tank90GameComponent = (props) =>{
         trackEnemyFire();
         window._int.push(window.setInterval(()=>{
           enemyPositions.forEach((tank, i) => {
-            var rnd = Math.floor(Math.random()*4)+1;
-            var timeout = (Math.floor(Math.random()*4)+1)*1000;
+            let rnd = Math.floor(Math.random()*4)+1;
+            let timeout = (Math.floor(Math.random()*4)+1)*1000;
             switch(rnd){
               case 1:
               window._int[1] = setTimeout(()=>{
@@ -535,11 +536,15 @@ const Tank90GameComponent = (props) =>{
 
           <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>
             <canvas id ='game' style={{width:'100%',height:'100%',background:'black'}}></canvas>
+              <button style={{marginRight: "10px"}} className="btn btn-secondary" onClick={fullscreen}>FULLSCREEN</button>
             <button className="btn btn-danger" onClick={()=>{ props.stopGame()}}>STOP GAME</button>
           </div>
-          : <div><h1 style={{'marginTop':"100px"}} >THE T90 GAME</h1>
-          <p>Please click on "start game" to play !</p>
-          <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div>
+          : <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>
+              <div style={{width:'100%',height:'100%', padding:"5px", marginBottom:"15px",background:'black', boxShadow: "0 0 10px #62cdff", borderRadius: "5px"}}>
+                <h1 style={{'marginTop':"100px"}} >THE T90 GAME</h1>
+                <p>Please click on "start game" to play !</p>
+              </div>
+          <button className="btn btn-primary" onClick={()=>{props.startGame(); document.body.focus()}}>START GAME</button></div>
         }
         <Disclaimer displayControls="t90" />
         </div>

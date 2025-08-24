@@ -2,25 +2,26 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Disclaimer from '../Disclaimer/Disclaimer';
 import { freeze, unfreeze } from '../common';
+import { fullscreen } from '../utility/commonFunctions';
 
 
 const SnakeGameComponent = (props) =>{
   useEffect(()=>{
-    var fps;
-    var canvas; var foodX; var foodY;
+    let fps;
+    let canvas; let foodX; let foodY;
     if(props.gameOn){
     canvas = document.getElementById('game');
-    var ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d');
     //Initial Snake stuff
-    var x = canvas.width/2;
-    var y = canvas.height -30;
-    var score = 0;
-    var dx = 5;
-    var dy = 0;
-    var didSnakeEatFood = false;
-    var changingDirection;
-    var snakeDirection = 'R';
-    var snakeParts = [{x: x, y: y},  {x: x-5, y: y},  {x: x-10, y: y},  {x: x-15, y: y},  {x: x-20, y: y}];
+    let x = canvas.width/2;
+    let y = canvas.height -30;
+    let score = 0;
+    let dx = 5;
+    let dy = 0;
+    let didSnakeEatFood = false;
+    let changingDirection;
+    let snakeDirection = 'R';
+    let snakeParts = [{x: x, y: y},  {x: x-5, y: y},  {x: x-10, y: y},  {x: x-15, y: y},  {x: x-20, y: y}];
     document.addEventListener('keyup',keyUpHandler);
     function keyUpHandler(e){
       if(changingDirection){
@@ -144,10 +145,14 @@ const SnakeGameComponent = (props) =>{
 
         <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>
           <canvas id ='game' style={{width:'100%',height:'100%',background:'black'}}></canvas>
+            <button style={{marginRight: "10px"}} className="btn btn-secondary" onClick={fullscreen}>FULLSCREEN</button>
           <button className="btn btn-danger" onClick={()=>{ props.stopGame()}}>STOP GAME</button>
         </div>
-        : <div><h1 style={{'marginTop':"100px"}} >THE SNAKE GAME</h1>
-        <p>Please click on "start game" to play !</p>
+        : <div style={{width:'60vw',height:'60vh',margin:'30px auto 0 auto',border:'1px solid black'}}>
+          <div style={{width:'100%',height:'100%', padding:"5px", marginBottom:"15px",background:'black', boxShadow: "0 0 10px #62cdff", borderRadius: "5px"}}>
+            <h1 style={{'marginTop':"100px"}} >THE SNAKE GAME</h1>
+            <p>Please click on "start game" to play !</p>
+          </div>
         <button className="btn btn-primary" onClick={()=>props.startGame()}>START GAME</button></div>
       }
       <Disclaimer displayControls="snake"/>
